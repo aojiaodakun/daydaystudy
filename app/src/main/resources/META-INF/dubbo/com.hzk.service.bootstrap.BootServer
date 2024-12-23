@@ -1,0 +1,2 @@
+jetty=com.hzk.service.bootstrap.embedjetty.EmbedJettyServer
+tomcat=com.hzk.service.bootstrap.embedtomcat.EmbedTomcatServer

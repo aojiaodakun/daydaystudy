@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee  http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+
+    <listener>
+        <listener-class>com.hzk.webserver.listener.HzkServletContextListener</listener-class>
+    </listener>
+
+
+    <filter>
+        <filter-name>HzkFilter1</filter-name>
+        <filter-class>com.hzk.webserver.filter.HzkFilter1</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>HzkFilter1</filter-name>
+        <url-pattern>*</url-pattern>
+    </filter-mapping>
+
+    <servlet>
+        <servlet-name>HelloServlet</servlet-name>
+        <servlet-class>com.hzk.webserver.servlet.HelloServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HelloServlet</servlet-name>
+        <url-pattern>/hello</url-pattern>
+    </servlet-mapping>
+
+
+</web-app>
