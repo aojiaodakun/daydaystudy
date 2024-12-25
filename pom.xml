@@ -31,6 +31,10 @@
         <metrics.version>4.2.3</metrics.version>
         <tomcat.version>9.0.90</tomcat.version>
         <dubbo.version>3.2.0</dubbo.version>
+        <zookeeper.version>3.5.9</zookeeper.version>
+        <curator.version>4.2.0</curator.version>
+        <archaius-core.version>0.7.7</archaius-core.version>
+        <commons-configuration.version>1.10</commons-configuration.version>
     </properties>
 
     <dependencyManagement>
@@ -139,6 +143,42 @@
                 <version>${dubbo.version}</version>
             </dependency>
             <!-- dubbo rpc end-->
+
+            <!-- zk start -->
+            <dependency>
+                <groupId>org.apache.zookeeper</groupId>
+                <artifactId>zookeeper</artifactId>
+                <version>${zookeeper.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-framework</artifactId>
+                <version>${curator.version}</version>
+                <type>jar</type>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.apache.zookeeper</groupId>
+                        <artifactId>zookeeper</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-recipes</artifactId>
+                <version>${curator.version}</version>
+                <type>jar</type>
+            </dependency>
+            <!-- zk end -->
+            <dependency>
+                <groupId>com.netflix.archaius</groupId>
+                <artifactId>archaius-core</artifactId>
+                <version>${archaius-core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-configuration</groupId>
+                <artifactId>commons-configuration</artifactId>
+                <version>${commons-configuration.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

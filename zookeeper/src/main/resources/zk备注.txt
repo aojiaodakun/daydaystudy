@@ -1,0 +1,3 @@
+1、zookeeper-server下载3.5.9版本，官网
+https://archive.apache.org/dist/zookeeper/zookeeper-3.5.9/
+2、zk可视化工具，ZooInspector
