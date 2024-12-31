@@ -20,13 +20,14 @@ import org.junit.Test;
 
 import java.net.InetSocketAddress;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class CuratorCreate {
 
     CuratorFramework client;
 
-    String namespace = "create";
+    String namespace = "curator";
 
     @Before
     public void before(){
@@ -56,11 +57,13 @@ public class CuratorCreate {
 
     @Test
     public void create1() throws Exception{
-        String node = "1";
+        String node = "/type";
+        byte[] bytes = node.getBytes("utf-8");
         client.create()
+                .creatingParentsIfNeeded()
                 .withMode(CreateMode.PERSISTENT)
                 .withACL(ZooDefs.Ids.OPEN_ACL_UNSAFE)
-                .forPath("/node" + node,("node" + node).getBytes());
+                .forPath("/webserver" + node,("jetty").getBytes());
         System.out.println("结束");
     }
 
@@ -102,11 +105,13 @@ public class CuratorCreate {
                 .inBackground(new BackgroundCallback() {
                     @Override
                     public void processResult(CuratorFramework curatorFramework, CuratorEvent curatorEvent) throws Exception {
+                        System.out.println("2");
                         System.out.println(curatorEvent.getPath());
                         System.out.println(curatorEvent.getType());
                     }
                 })
                 .forPath("/node" + node,("node" + node).getBytes());
+        System.out.println("1");
         Thread.sleep(1000 * 5);
         System.out.println("结束");
     }

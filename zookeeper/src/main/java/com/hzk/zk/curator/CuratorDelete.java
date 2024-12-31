@@ -15,13 +15,13 @@ public class CuratorDelete {
 
     CuratorFramework client;
 
-    String namespace = "delete";
+    String namespace = "create";
 
     @Before
     public void before(){
         RetryPolicy retryPolicy = new ExponentialBackoffRetry(1000,3);
         client = CuratorFrameworkFactory.builder()
-                .connectString(BasicConstants.IP_CLUSTER)
+                .connectString(BasicConstants.IP)
                 .sessionTimeoutMs(1000 * 20)
                 .retryPolicy(retryPolicy)
                 .namespace(namespace)
@@ -37,7 +37,7 @@ public class CuratorDelete {
 
     @Test
     public void delete1() throws Exception{
-        String node = "1";
+        String node = "2";
         client.delete()
                 .forPath("/node" + node);
         System.out.println("结束");

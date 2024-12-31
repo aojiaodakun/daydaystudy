@@ -42,6 +42,11 @@ public class LoginFilter implements Filter {
         String password = request.getParameter("password");
 
         String requestURI = request.getRequestURI();
+
+        if (this.isWhiteListPath(requestURI)) {
+            filterChain.doFilter((ServletRequest)servletRequest, servletResponse);
+            return;
+        }
         if (requestURI.endsWith("login.do")) {
             if (user == null || user.equals("")
                     || password == null || password.equals("")) {
@@ -97,6 +102,10 @@ public class LoginFilter implements Filter {
             filterChain.doFilter(servletRequest, servletResponse);
         }
 
+    }
+    private boolean isWhiteListPath(String path) {
+        boolean isWhiteListPath = path.contains("/property") ;
+        return isWhiteListPath  ? true : isWhiteListPath;
     }
 
 

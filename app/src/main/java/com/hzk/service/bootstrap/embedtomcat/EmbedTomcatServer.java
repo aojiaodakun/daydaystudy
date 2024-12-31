@@ -53,7 +53,7 @@ public class EmbedTomcatServer implements BootServer {
     @Override
     public void start(String[] args) {
         try {
-            int port = Integer.getInteger("JETTY_PORT", 8080);
+            int port = Integer.getInteger("JETTY_PORT", 8081);
             String contextPath = getProperty("JETTY_CONTEXT", "/ierp");
             if (!contextPath.startsWith("/")) {
                 contextPath = "/" + contextPath;

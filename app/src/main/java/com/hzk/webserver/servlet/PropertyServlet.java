@@ -25,7 +25,7 @@ public class PropertyServlet implements Servlet {
     }
 
     /**
-     * http://127.0.0.1:8080/ierp/property.do?name=java.version
+     * http://127.0.0.1:8081/ierp/property.do?name=java.version
      */
     @Override
     public void service(ServletRequest servletRequest, ServletResponse servletResponse) throws ServletException, IOException {
@@ -33,11 +33,11 @@ public class PropertyServlet implements Servlet {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         String name = request.getParameter("name");
-//        String property = System.getProperty(name);
+        String property = System.getProperty(name);
         /**
          * 返回系统的所有属性
          */
-        String property = String.valueOf(System.getProperties());
+//        String property = String.valueOf(System.getProperties());
         PrintWriter writer = response.getWriter();
         writer.write(property);
         writer.flush();

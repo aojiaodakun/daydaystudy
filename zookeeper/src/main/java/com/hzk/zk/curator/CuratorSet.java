@@ -15,13 +15,13 @@ public class CuratorSet {
 
     CuratorFramework client;
 
-    String namespace = "set";
+    String namespace = "curator";
 
     @Before
     public void before(){
         RetryPolicy retryPolicy = new ExponentialBackoffRetry(1000,3);
         client = CuratorFrameworkFactory.builder()
-                .connectString(BasicConstants.IP_CLUSTER)
+                .connectString(BasicConstants.IP)
                 .sessionTimeoutMs(1000 * 20)
                 .retryPolicy(retryPolicy)
                 .namespace(namespace)
@@ -36,9 +36,9 @@ public class CuratorSet {
 
     @Test
     public void set1() throws Exception{
-        String node = "1";
+        String node = "jetty";
         client.setData()
-                .forPath("/node" + node,("node" + node).getBytes());
+                .forPath("/webserver/type",(node).getBytes());
     }
 
 

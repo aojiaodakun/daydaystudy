@@ -65,7 +65,7 @@ public class ZKCreate {
     @Test
     public void create2() throws Exception{
         String node = "2";
-        zooKeeper.create("/create/node" + node,("node" + node).getBytes(), ZooDefs.Ids.READ_ACL_UNSAFE, CreateMode.PERSISTENT);
+        zooKeeper.create("/create",("node" + node).getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
     }
 
     @Test
@@ -131,6 +131,7 @@ public class ZKCreate {
     public void create9() throws Exception{
         String node = "9";
         String result = zooKeeper.create("/create/node" + node,("node" + node).getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL);
+        System.out.println();
     }
 
     @Test

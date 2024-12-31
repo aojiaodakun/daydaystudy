@@ -16,16 +16,16 @@ public class CuratorGet {
 
     CuratorFramework client;
 
-    String namespace = "get";
+    String namespace = "config";
 
     @Before
     public void before(){
         RetryPolicy retryPolicy = new ExponentialBackoffRetry(1000,3);
         client = CuratorFrameworkFactory.builder()
-                .connectString(BasicConstants.IP_CLUSTER)
+                .connectString(BasicConstants.IP)
                 .sessionTimeoutMs(1000 * 20)
                 .retryPolicy(retryPolicy)
-                .namespace(namespace)
+//                .namespace(namespace)
                 .build();
         client.start();
     }
@@ -38,10 +38,10 @@ public class CuratorGet {
 
     @Test
     public void get1() throws Exception{
-        String node = "1";
         byte[] bytes = client.getData()
-                .forPath("/node" + node);
-        System.out.println(new String(bytes));
+                .forPath("/config/prop/webserver.type");
+        String value = new String(bytes);
+        System.out.println(value);
     }
 
     @Test

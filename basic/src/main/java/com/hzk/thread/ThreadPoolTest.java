@@ -82,7 +82,6 @@ public class ThreadPoolTest {
         executorService.execute(()->{
             printAndSleep("FFF");
         });
-
         // 阻塞main线程
         System.in.read();
     }

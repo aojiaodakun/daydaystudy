@@ -17,7 +17,7 @@ public class EmbedJettyServer implements BootServer {
 
     @Override
     public void start(String[] args) throws Exception {
-        int port = Integer.getInteger("JETTY_PORT", 8080);
+        int port = Integer.getInteger("JETTY_PORT", 8081);
         String contextPath = getProperty("JETTY_CONTEXT", "/ierp");
         if (!contextPath.startsWith("/")) {
             contextPath = "/" + contextPath;
@@ -65,6 +65,7 @@ public class EmbedJettyServer implements BootServer {
         } else if (context.isFailed()) {
             throw new Error("WebContext start failed.");
         }
+//        主线程卡住
         server.join();
     }
 

@@ -19,7 +19,7 @@ public class CuratorWatcher {
     public void before(){
         RetryPolicy retryPolicy = new ExponentialBackoffRetry(1000,3);
         client = CuratorFrameworkFactory.builder()
-                .connectString(BasicConstants.IP_CLUSTER)
+                .connectString(BasicConstants.IP)
                 .sessionTimeoutMs(1000 * 20)
                 .retryPolicy(retryPolicy)
                 .build();
@@ -35,7 +35,7 @@ public class CuratorWatcher {
     @Test
     public void watcher1() throws Exception{
         // 监视器对象
-        final NodeCache nodeCache = new NodeCache(client,"/watcher1");
+        final NodeCache nodeCache = new NodeCache(client,"/config/prop");
         nodeCache.start();
         nodeCache.getListenable().addListener(new NodeCacheListener() {
             @Override
@@ -52,7 +52,7 @@ public class CuratorWatcher {
     @Test
     public void watcher2() throws Exception{
         // agr3:事件中是否可以获取节点的数据
-        PathChildrenCache pathChildrenCache = new PathChildrenCache(client,"/watcher1",true);
+        PathChildrenCache pathChildrenCache = new PathChildrenCache(client,"/config/prop",true);
         pathChildrenCache.start();
         pathChildrenCache.getListenable().addListener(new PathChildrenCacheListener() {
             @Override

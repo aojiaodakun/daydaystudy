@@ -17,7 +17,7 @@ public class ZKConn {
             //创建一个计数器对象
             CountDownLatch countDownLatch=new CountDownLatch(1);
             //第一个参数是服务器ip和端口号，第二个参数是客户端与服务器的会话超时时间单位ms，第三个参数是监视器对象
-            zooKeeper=new ZooKeeper(BasicConstants.IP_CLUSTER, 1000 * 20, new Watcher() {
+            zooKeeper=new ZooKeeper(BasicConstants.IP, 1000 * 20, new Watcher() {
                 @Override
                 public void process(WatchedEvent event) {
                     if(event.getState()== Watcher.Event.KeeperState.SyncConnected){
