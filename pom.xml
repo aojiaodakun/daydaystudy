@@ -8,6 +8,7 @@
     <artifactId>daydaystudy</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+
     <modules>
         <module>basic</module>
         <module>redis</module>
@@ -18,6 +19,7 @@
 
 
     <properties>
+        <revision>1.0-SNAPSHOT</revision>
         <junit.version>4.12</junit.version>
         <fastjson.version>1.2.83</fastjson.version>
         <commons-io.version>2.6</commons-io.version>
@@ -30,11 +32,13 @@
         <logback.version>1.2.13</logback.version>
         <metrics.version>4.2.3</metrics.version>
         <tomcat.version>9.0.90</tomcat.version>
-        <dubbo.version>3.2.0</dubbo.version>
+        <dubbo.version>2.7.8</dubbo.version>
         <zookeeper.version>3.5.9</zookeeper.version>
         <curator.version>4.2.0</curator.version>
         <archaius-core.version>0.7.7</archaius-core.version>
         <commons-configuration.version>1.10</commons-configuration.version>
+        <validation-api.version>1.0.0.GA</validation-api.version>
+        <hibernate-validator.version>4.2.0.Final</hibernate-validator.version>
     </properties>
 
     <dependencyManagement>
@@ -179,6 +183,18 @@
                 <artifactId>commons-configuration</artifactId>
                 <version>${commons-configuration.version}</version>
             </dependency>
+            <!-- 参数验证,加入start-->
+            <dependency>
+                <groupId>javax.validation</groupId>
+                <artifactId>validation-api</artifactId>
+                <version>${validation-api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>${hibernate-validator.version}</version>
+            </dependency>
+            <!-- 参数验证,加入end-->
         </dependencies>
     </dependencyManagement>
 
