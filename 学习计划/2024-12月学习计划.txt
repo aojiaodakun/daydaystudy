@@ -1,8 +1,3 @@
-【学习资料】
-java基础：https://www.runoob.com/java/java-serialization.html
-设计模式：https://www.runoob.com/design-pattern/design-pattern-tutorial.html
-
-------------------2024年12月---------------------
 12-18
 [basic]工程
 com.hzk.collection.MapTest
@@ -42,5 +37,11 @@ com.hzk.thread.ThreadPoolTest
 
 12-31
 [dubbo]工程
-1、
-------------------2025年1月---------------------
+dubbo-rpc底层逻辑
+[提供者]
+1、拼接参数ip+port生成URL对象
+2、本地导出，起netty监听20880端口
+3、远程导出，将URL参数，包含ip，port，接口等信心注册到注册中心（zk）
+[消费者]
+1、从注册中心（zk）获取接口服务的ip+port，生成netty-client建立tcp连接，创建接口代理对象
+2、接口代理对象发起远程调用，底层netty-client发起tcp请求
