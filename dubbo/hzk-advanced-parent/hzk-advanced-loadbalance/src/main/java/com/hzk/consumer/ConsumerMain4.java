@@ -22,7 +22,10 @@ public class ConsumerMain4 {
          * org.apache.dubbo.rpc.cluster.support.AbstractClusterInvoker#invoke(org.apache.dubbo.rpc.Invocation)
          */
         // 最少活跃，即LeastActiveLoadBalance
-        referenceConfig.setLoadbalance("leastactive");
+//        referenceConfig.setLoadbalance("leastactive");
+//        referenceConfig.setLoadbalance("shortestresponse");
+        // dubboSpi
+        referenceConfig.setLoadbalance("pwhdiv");
         // 服务引用
         IDemoService demoService = referenceConfig.get();
         System.out.println("服务引用完成");
@@ -30,7 +33,8 @@ public class ConsumerMain4 {
         while (true) {
             String name = "hzk";
             System.out.println("remote invoke,param:" + name);
-            demoService.sayHello(name);
+//            demoService.sayHello(name);
+            demoService.sleep();
             Thread.currentThread().sleep(1000*3);
         }
 

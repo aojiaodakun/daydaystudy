@@ -23,7 +23,7 @@ public class HelloServlet implements Servlet {
     }
 
     /**
-     * http://localhost:8080/ierp/hello
+     * http://localhost:8081/ierp/hello.do
      */
     @Override
     public void service(ServletRequest servletRequest, ServletResponse servletResponse) throws ServletException, IOException {

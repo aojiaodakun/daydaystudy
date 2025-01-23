@@ -48,6 +48,14 @@
         <url-pattern>/hello</url-pattern>
     </servlet-mapping>
     <servlet>
+        <servlet-name>DubboServlet</servlet-name>
+        <servlet-class>com.hzk.webserver.servlet.DubboServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DubboServlet</servlet-name>
+        <url-pattern>/dubbo</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>PropertyServlet</servlet-name>
         <servlet-class>com.hzk.webserver.servlet.PropertyServlet</servlet-class>
     </servlet>

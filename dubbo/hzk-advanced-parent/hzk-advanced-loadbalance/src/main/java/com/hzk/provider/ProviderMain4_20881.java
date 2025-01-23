@@ -8,11 +8,11 @@ import java.util.concurrent.CountDownLatch;
 /**
  4、负载均衡
  */
-public class ProviderMain4 {
+public class ProviderMain4_20881 {
 
     public static void main(String[] args) throws Exception{
-        System.setProperty("dubbo.test.sleep", "1000");
         ServiceConfig serviceConfig = ProviderFactory.getCommonServiceConfig();
+        serviceConfig.getProtocol().setPort(20881);
         // 服务导出
         serviceConfig.export();
         System.out.println("服务导出完成");

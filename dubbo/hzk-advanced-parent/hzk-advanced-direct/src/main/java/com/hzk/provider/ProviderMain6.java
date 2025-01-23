@@ -12,6 +12,7 @@ public class ProviderMain6 {
 
     public static void main(String[] args) throws Exception{
         ServiceConfig serviceConfig = ProviderFactory.getCommonServiceConfig();
+        serviceConfig.getRegistry().setRegister(false);
         // 服务导出
         serviceConfig.export();
         System.out.println("服务导出完成");

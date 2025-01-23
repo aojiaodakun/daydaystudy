@@ -254,7 +254,7 @@ public class ConsumerMain {
             // 同步调用
             while (true) {
                 try {
-                    Thread.currentThread().sleep(1000 * 3);
+                    Thread.sleep(1000 * 3);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

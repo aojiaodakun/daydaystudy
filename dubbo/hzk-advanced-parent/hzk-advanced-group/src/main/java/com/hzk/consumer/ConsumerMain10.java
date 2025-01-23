@@ -15,7 +15,7 @@ public class ConsumerMain10 {
         /**
          * 10、服务分组
          */
-        referenceConfig.setGroup("bos");
+        referenceConfig.setGroup("bos1");
         // 服务引用
         IDemoService demoService = referenceConfig.get();
         System.out.println("服务引用完成");

@@ -48,7 +48,7 @@ public class ConsumerMain23 {
 //            asyncCall1();
             asyncCall2();
 //            asyncCall3();
-            Thread.currentThread().sleep(1000*3);
+            Thread.currentThread().sleep(1000*7);
         }
 
     }

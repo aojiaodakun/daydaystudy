@@ -38,7 +38,7 @@ public class ProviderMain1 {
 //        /**
 //         * 46、注册信息简化
 //         */
-//        serviceConfig.getRegistry().setSimplified(true);
+        serviceConfig.getRegistry().setSimplified(true);
         /**
          * 10、服务分组
          */
@@ -47,7 +47,12 @@ public class ProviderMain1 {
         serviceConfig.getProtocol().setPort(20881);
 
 
-        // 服务导出
+        /**
+         * 服务导出
+         * 1、拼接参数ip+port生成URL对象
+         * 2、本地导出，起netty监听20880端口
+         * 3、远程导出，将URL参数，包含ip，port，接口等信心注册到注册中心（zk）
+         */
         serviceConfig.export();
         System.out.println("服务导出完成");
 

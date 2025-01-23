@@ -45,3 +45,35 @@ dubbo-rpc底层逻辑
 [消费者]
 1、从注册中心（zk）获取接口服务的ip+port，生成netty-client建立tcp连接，创建接口代理对象
 2、接口代理对象发起远程调用，底层netty-client发起tcp请求
+
+[20250114]
+苍穹listener
+bos-resouces.jar/webapp/web.xml的kd.bos.service.web.ServiceInitListener
+	LifecycleManager.start();
+		获取到所有的Service[] sysServices，遍历调用service.start()
+
+苍穹dubbo-rpc
+kd.bos.servicehelper.DispatchServiceHelper#invokeBOSService
+	接口类：kd.bos.service.DispatchService
+	实现类：kd.bos.service.DispatchServiceImpl#invoke，包含反射
+
+【任务】
+dubbo/hzk-advanced-basic
+任务0、声明多一个自定义接口和实现类
+	ServiceConfig<IDemoService> serviceConfig = new ServiceConfig<>();
+	serviceConfig.setInterface(IDemoService.class);
+	// 服务
+	serviceConfig.setRef(new CommonDemoServiceImpl());
+
+app工程
+1、任务1，生命周期管理器
+com.hzk.webserver.listener.HzkServletContextListener#contextInitialized
+	javaSpi
+2、任务2，dubboService，实现泛化调用，即反射调用微服务接口
+
+
+nginx/web/mservice
+8022/ierp
+	conf/conf.d/upstream，转发web的外部访问
+web：8080，rpc-client
+
