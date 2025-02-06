@@ -28,3 +28,7 @@
 1、了解并发控制的使用场景，源码实现
 [hzk-advanced-token]工程
 1、了解令牌验证的使用场景，源码实现
+
+01-21
+[basic工程]
+1、com.hzk.net包，学习bio，nio，aio，netty框架

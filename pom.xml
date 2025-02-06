@@ -15,6 +15,7 @@
         <module>zookeeper</module>
         <module>dubbo</module>
         <module>app</module>
+        <module>util</module>
     </modules>
 
 
@@ -33,7 +34,8 @@
         <metrics.version>4.2.3</metrics.version>
         <tomcat.version>9.0.90</tomcat.version>
         <dubbo.version>2.7.8</dubbo.version>
-        <zookeeper.version>3.5.9</zookeeper.version>
+        <zookeeper.version>3.6.1</zookeeper.version>
+        <redis.version>3.8.0</redis.version>
         <curator.version>4.2.0</curator.version>
         <archaius-core.version>0.7.7</archaius-core.version>
         <commons-configuration.version>1.10</commons-configuration.version>
@@ -195,6 +197,14 @@
                 <version>${hibernate-validator.version}</version>
             </dependency>
             <!-- 参数验证,加入end-->
+            <!-- redis start -->
+            <dependency>
+                <groupId>redis.clients</groupId>
+                <artifactId>jedis</artifactId>
+                <version>${redis.version}</version>
+            </dependency>
+            <!-- redis end -->
+
         </dependencies>
     </dependencyManagement>
 

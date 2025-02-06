@@ -21,7 +21,8 @@ public class ConsumerMain1 {
 //        /**
 //         * 1、启动时检查
 //         */
-        referenceConfig.getRegistry().setCheck(Boolean.FALSE);
+//        referenceConfig.getRegistry().setCheck(Boolean.FALSE);
+        referenceConfig.setCheck(Boolean.TRUE);
         referenceConfig.setTimeout(1000 * 60 * 5);
 //        /**
 //         * 7、只订阅

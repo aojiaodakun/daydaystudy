@@ -16,12 +16,15 @@ public class ProviderMain31 {
         ServiceConfig serviceConfig = ProviderFactory.getCommonServiceConfig();
         serviceConfig.setRef(new IDemoServiceImpl31());
 
+
         // 测试时，切换com.hzk.constants.ConcurrentConstants.CONCURRENT_CONTROL
-        if (ConcurrentConstants.CONCURRENT_CONTROL.equals(ConcurrentConstants.CONCURRENT_CONTROL_PROVIDER) ||
-                ConcurrentConstants.CONCURRENT_CONTROL.equals(ConcurrentConstants.CONCURRENT_CONTROL_ALL)) {
-            // 提供者并发控制
-            serviceConfig.setExecutes(1);
-        }
+//        if (ConcurrentConstants.CONCURRENT_CONTROL.equals(ConcurrentConstants.CONCURRENT_CONTROL_PROVIDER) ||
+//                ConcurrentConstants.CONCURRENT_CONTROL.equals(ConcurrentConstants.CONCURRENT_CONTROL_ALL)) {
+//            // 提供者并发控制
+//            serviceConfig.setExecutes(1);
+//        }
+
+        serviceConfig.getProtocol().setThreads(2);
         // 服务导出
         serviceConfig.export();
         System.out.println("服务导出完成");

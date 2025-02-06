@@ -1,0 +1,4 @@
+02-06
+[redis工程]
+1、学习如何构建redis客户端
+2、学习redis的5种数据结构常用api，主要掌握string、hash
