@@ -1,5 +1,7 @@
 package com.hzk.webserver.filter;
 
+import com.hzk.session.SessionManager;
+
 import javax.servlet.*;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -31,7 +33,7 @@ public class LoginFilter implements Filter {
 
     }
     /**
-     * http://127.0.0.1:8080/ierp/login.do?user=admin&password=admin
+     * http://localhost:8080/ierp/login.do?user=admin&password=admin
      */
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
@@ -43,10 +45,11 @@ public class LoginFilter implements Filter {
 
         String requestURI = request.getRequestURI();
 
-        if (this.isWhiteListPath(requestURI)) {
-            filterChain.doFilter((ServletRequest)servletRequest, servletResponse);
-            return;
-        }
+        // 白名单请求
+//        if (this.isWhiteListPath(requestURI)) {
+//            filterChain.doFilter((ServletRequest)servletRequest, servletResponse);
+//            return;
+//        }
         if (requestURI.endsWith("login.do")) {
             if (user == null || user.equals("")
                     || password == null || password.equals("")) {
@@ -58,7 +61,8 @@ public class LoginFilter implements Filter {
                 boolean flag = user_password_map.get(user).equals(password);
                 PrintWriter writer = response.getWriter();
                 if (flag) {
-                    Cookie userCookie = new Cookie("sessionId", user);
+                    String globalSessionId = SessionManager.newSession(user);
+                    Cookie userCookie = new Cookie("sessionId", globalSessionId);
                     userCookie.setPath("/");
                     sessionIdSet.add(user);
                     response.addCookie(userCookie);
@@ -86,7 +90,8 @@ public class LoginFilter implements Filter {
             String value = tempCookie.getValue();
             if (name.equals("sessionId")) {
                 // 校验是否登录过
-                if (sessionIdSet.contains(value)) {
+                if (SessionManager.checkSession(value)) {
+//                if (sessionIdSet.contains(value)) {
                     isLogin = true;
                     break;
                 }else{

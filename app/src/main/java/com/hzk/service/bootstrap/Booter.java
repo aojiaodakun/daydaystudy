@@ -2,6 +2,7 @@ package com.hzk.service.bootstrap;
 
 import com.hzk.framework.lifecycle.Service;
 import com.hzk.service.bootstrap.embedjetty.EmbedJettyServer;
+import com.hzk.util.StringUtils;
 import com.hzk.zk.ZKFactory;
 import com.hzk.zk.ZookeeperConfiguration;
 import org.apache.curator.RetryPolicy;
@@ -20,9 +21,14 @@ import java.util.ServiceLoader;
 
 public class Booter {
 
-    static Map<String, CuratorFramework> zkPool = new HashMap<>();
 
     public static void main(String[] args) throws Exception {
+        System.setProperty("dubbo.protocol.telnet.port", "-1");
+
+        if (StringUtils.isEmpty(System.getProperty("appName"))) {
+            System.setProperty("appName", "mservice_all");
+        }
+
         // zk客户端
 //        CuratorFramework client = ZKFactory.getZkClient("127.0.0.1:2181");
 //        byte[] bytes = client.getData()

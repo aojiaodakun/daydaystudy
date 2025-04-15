@@ -2,21 +2,19 @@ package com.hzk.dubbo.factory;
 
 import com.hzk.constants.HzkCommonConstants;
 import com.hzk.dubbo.service.DispatchService;
-import com.hzk.service.IDemoService;
 import org.apache.dubbo.config.ApplicationConfig;
 import org.apache.dubbo.config.ReferenceConfig;
 import org.apache.dubbo.config.RegistryConfig;
 
-import static com.hzk.constants.HzkCommonConstants.PROTOCOL_DUBBO_DEFAULT_PORT;
 
 public class ConsumerFactory {
 
     public static ReferenceConfig<DispatchService> getCommonReferenceConfig(){
         ReferenceConfig<DispatchService> referenceConfig = new ReferenceConfig<>();
         referenceConfig.setInterface(DispatchService.class);
-//        referenceConfig.setGroup("bos");
+        referenceConfig.setGroup("bos");
         referenceConfig.setScope("remote");
-        referenceConfig.setLoadbalance("mydiv");
+        referenceConfig.setLoadbalance("hash");
         // 应用配置
         referenceConfig.setApplication(new ApplicationConfig(HzkCommonConstants.APPLICATION_NAME_CONSUMER));
         // 注册配置

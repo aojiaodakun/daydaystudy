@@ -12,6 +12,11 @@
     <artifactId>app</artifactId>
 
     <dependencies>
+        <dependency>
+            <groupId>org.example</groupId>
+            <artifactId>util</artifactId>
+            <version>${revision}</version>
+        </dependency>
         <!-- 日志门面slf4j -->
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -69,6 +74,10 @@
             <artifactId>curator-recipes</artifactId>
         </dependency>
         <!-- zk end -->
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+        </dependency>
         <dependency>
             <groupId>com.netflix.archaius</groupId>
             <artifactId>archaius-core</artifactId>

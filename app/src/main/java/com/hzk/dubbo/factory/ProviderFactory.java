@@ -3,8 +3,6 @@ package com.hzk.dubbo.factory;
 import com.hzk.constants.HzkCommonConstants;
 import com.hzk.dubbo.service.DispatchService;
 import com.hzk.dubbo.service.DispatchServiceImpl;
-import com.hzk.service.IDemoService;
-import com.hzk.service.impl.CommonDemoServiceImpl;
 import org.apache.dubbo.config.*;
 
 public class ProviderFactory {
@@ -18,6 +16,7 @@ public class ProviderFactory {
         serviceConfig.setProtocol(new ProtocolConfig(HzkCommonConstants.PROTOCOL_DUBBO));
         // 提供者配置
         serviceConfig.setProvider(new ProviderConfig());
+        serviceConfig.setGroup("bos");
         serviceConfig.setVersion("1.0.0");
         // 应用配置
         serviceConfig.setApplication(new ApplicationConfig(HzkCommonConstants.APPLICATION_NAME_PROVIDER));

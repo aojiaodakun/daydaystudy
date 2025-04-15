@@ -7,7 +7,7 @@ public class DubboMService {
     }
 
     public String hello(String name){
-        return "name is  " + name;
+        return "name is " + name;
 //        throw new RuntimeException("服务不可用");
     }
     public String hello(Integer age){

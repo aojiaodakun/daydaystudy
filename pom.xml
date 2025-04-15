@@ -16,6 +16,7 @@
         <module>dubbo</module>
         <module>app</module>
         <module>util</module>
+        <module>nacos</module>
     </modules>
 
 
@@ -31,16 +32,20 @@
         <guava.version>29.0-jre</guava.version>
         <slf4j-api.version>1.7.30</slf4j-api.version>
         <logback.version>1.2.13</logback.version>
+        <log4j.version>1.2.17</log4j.version>
         <metrics.version>4.2.3</metrics.version>
         <tomcat.version>9.0.90</tomcat.version>
         <dubbo.version>2.7.8</dubbo.version>
         <zookeeper.version>3.6.1</zookeeper.version>
         <redis.version>3.8.0</redis.version>
+        <nacos.version>2.2.4</nacos.version>
+        <snakeyaml.version>1.32</snakeyaml.version>
         <curator.version>4.2.0</curator.version>
         <archaius-core.version>0.7.7</archaius-core.version>
         <commons-configuration.version>1.10</commons-configuration.version>
         <validation-api.version>1.0.0.GA</validation-api.version>
         <hibernate-validator.version>4.2.0.Final</hibernate-validator.version>
+        <annotations.version>2.0.3</annotations.version>
     </properties>
 
     <dependencyManagement>
@@ -102,6 +107,11 @@
                 <groupId>ch.qos.logback</groupId>
                 <artifactId>logback-core</artifactId>
                 <version>${logback.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>${log4j.version}</version>
             </dependency>
             <!-- 日志框架 end-->
             <!-- metric start -->
@@ -204,7 +214,23 @@
                 <version>${redis.version}</version>
             </dependency>
             <!-- redis end -->
-
+            <!-- nacos start -->
+            <dependency>
+                <groupId>com.alibaba.nacos</groupId>
+                <artifactId>nacos-client</artifactId>
+                <version>${nacos.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.yaml</groupId>
+                <artifactId>snakeyaml</artifactId>
+                <version>${snakeyaml.version}</version>
+            </dependency>
+            <!-- nacos end -->
+            <dependency>
+                <groupId>com.google.code.findbugs</groupId>
+                <artifactId>annotations</artifactId>
+                <version>${annotations.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

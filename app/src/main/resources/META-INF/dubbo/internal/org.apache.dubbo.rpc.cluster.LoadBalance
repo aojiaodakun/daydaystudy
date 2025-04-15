@@ -1,1 +1,2 @@
 mydiv=com.hzk.dubbo.lb.MyLoadBalance
+hash=com.hzk.dubbo.lb.ConsistentHashingLoadBalance

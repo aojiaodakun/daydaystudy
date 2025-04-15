@@ -25,7 +25,7 @@ public class PropertyServlet implements Servlet {
     }
 
     /**
-     * http://127.0.0.1:8081/ierp/property.do?name=java.version
+     * http://localhost:8081/ierp/property.do?name=java.version
      */
     @Override
     public void service(ServletRequest servletRequest, ServletResponse servletResponse) throws ServletException, IOException {

@@ -22,7 +22,8 @@ public class EmbedJettyServer implements BootServer {
         if (!contextPath.startsWith("/")) {
             contextPath = "/" + contextPath;
         }
-        QueuedThreadPool threadPool = new QueuedThreadPool(200);
+//        QueuedThreadPool threadPool = new QueuedThreadPool(200);
+        QueuedThreadPool threadPool = new QueuedThreadPool(4);
         threadPool.setName("http-request-pool");
         Server server = new Server(threadPool);
 
@@ -30,8 +31,9 @@ public class EmbedJettyServer implements BootServer {
         setHttpConfiguration(httpConfig);
         ServerConnector connector = new ServerConnector(server,new HttpConnectionFactory(httpConfig));
         connector.setPort(port);
-        connector.setHost("127.0.0.1");
-        connector.setIdleTimeout(Integer.getInteger("org.eclipse.jetty.http.timeout",30000));
+//        connector.setHost("*");
+//        connector.setIdleTimeout(Integer.getInteger("org.eclipse.jetty.http.timeout",30000));
+        connector.setIdleTimeout(Integer.getInteger("org.eclipse.jetty.http.timeout",5000));
         server.addConnector(connector);
 
         MBeanContainer mbContainer = new MBeanContainer(ManagementFactory.getPlatformMBeanServer());
