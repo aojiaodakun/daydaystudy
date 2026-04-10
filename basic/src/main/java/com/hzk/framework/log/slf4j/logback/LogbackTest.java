@@ -9,6 +9,11 @@ public class LogbackTest {
 
     public static void main(String[] args) throws Exception {
         // logback.xml
+        Logger logger1 = LoggerFactory.getLogger("kd.bos.limiter.scene.ConcurrentSceneManager");
+        logger1.warn("warn message");
+
+
+        // logback.xml
         Logger logger = LoggerFactory.getLogger(LogbackTest.class.getName());
         logger.info("logback info");
 
@@ -21,6 +26,7 @@ public class LogbackTest {
         jc.setContext(loggerContext);
         loggerContext.reset();
         jc.doConfigure(LogbackTest.class.getResourceAsStream("/logback_dev.xml"));// StatusList会累加，可清空loggerContext.getStatusManager().clear();
+        // TODO filter拦截
         loggerContext.addTurboFilter(new LoggerNameFilter());
         loggerContext.getStatusManager().getCopyOfStatusList().forEach(e-> System.out.println(e));
         logger.info("logback info2");// 多个kafkaAppender

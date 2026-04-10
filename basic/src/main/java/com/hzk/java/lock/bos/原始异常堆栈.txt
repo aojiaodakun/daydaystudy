@@ -1,0 +1,59 @@
+"startEyeConfigService-thread/traceId:17af61b11e9b7be9/time:1755821390317" #72 prio=5 os_prio=0 tid=0x00007f23dc509800 nid=0x79 waiting for monitor entry [0x00007f23dbe7d000]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+	at kd.bos.dc.utils.AccountUtils.getAllTenantsByCurrentEnv(AccountUtils.java:595)
+	- waiting to lock <0x000000077bc011a8> (a java.lang.Class for kd.bos.dc.utils.AccountUtils)
+	at kd.bos.dc.utils.MCApiUtil.<clinit>(MCApiUtil.java:62)
+	at kd.bos.government.metadata.db.DBHelper.getDbConfig(DBHelper.java:93)
+	at kd.bos.eye.api.config.manager.DbConfigManager.initDbConfig(DbConfigManager.java:35)
+	at kd.bos.eye.service.EyeServerService.lambda$startEyeConfigService$0(EyeServerService.java:102)
+	at kd.bos.eye.service.EyeServerService$$Lambda$656/1738396212.run(Unknown Source)
+	at kd.bos.threads.impl.RequestContextRunnable.run(RequestContextRunnable.java:59)
+	at kd.bos.thread.ThreadLifeCycleManager$RunnableWrap.run(ThreadLifeCycleManager.java:270)
+	at java.lang.Thread.run(Thread.java:750)
+
+   Locked ownable synchronizers:
+	- None
+
+
+"main" #1 prio=5 os_prio=0 tid=0x00007f241c01e800 nid=0x2d in Object.wait() [0x00007f24220ed000]
+   java.lang.Thread.State: RUNNABLE
+	at kd.bos.dc.mc.impl.LoginMCServiceZKImpl.getWholeTenantsByCurrentEnv(LoginMCServiceZKImpl.java:163)
+	at kd.bos.dc.utils.AccountUtils.getAllTenantsByCurrentEnv(AccountUtils.java:597)
+	- locked <0x000000077bc011a8> (a java.lang.Class for kd.bos.dc.utils.AccountUtils)
+	at kd.bos.dc.utils.AccountUtils.getAllAccountsOfCurrentEnv(AccountUtils.java:572)
+	at kd.bos.resource.balancer.quota.TenantWeightManage.getAllAccountsOfCurrentEnv(TenantWeightManage.java:73)
+	at kd.bos.resource.balancer.quota.TenantWeightManage.reInitWeight(TenantWeightManage.java:54)
+	- locked <0x000000077b88c908> (a java.lang.Class for kd.bos.resource.balancer.quota.TenantWeightManage)
+	at kd.bos.resource.balancer.quota.TenantWeightManage.init(TenantWeightManage.java:43)
+	at kd.bos.resource.balancer.ResourceBalanceControlService.start(ResourceBalanceControlService.java:30)
+	at kd.bos.framework.lifecycle.LifecycleManager.start(LifecycleManager.java:42)
+	at kd.bos.service.web.ServiceInitListener.contextInitialized(ServiceInitListener.java:64)
+	at org.eclipse.jetty.server.handler.ContextHandler.callContextInitialized(ContextHandler.java:1073)
+	at org.eclipse.jetty.servlet.ServletContextHandler.callContextInitialized(ServletContextHandler.java:572)
+	at org.eclipse.jetty.server.handler.ContextHandler.contextInitialized(ContextHandler.java:1002)
+	at org.eclipse.jetty.servlet.ServletHandler.initialize(ServletHandler.java:765)
+	at org.eclipse.jetty.servlet.ServletContextHandler.startContext(ServletContextHandler.java:379)
+	at org.eclipse.jetty.webapp.WebAppContext.startWebapp(WebAppContext.java:1449)
+	at org.eclipse.jetty.webapp.WebAppContext.startContext(WebAppContext.java:1414)
+	at org.eclipse.jetty.server.handler.ContextHandler.doStart(ContextHandler.java:916)
+	at org.eclipse.jetty.servlet.ServletContextHandler.doStart(ServletContextHandler.java:288)
+	at org.eclipse.jetty.webapp.WebAppContext.doStart(WebAppContext.java:524)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:73)
+	- locked <0x000000077bc77fe0> (a java.lang.Object)
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.start(ContainerLifeCycle.java:169)
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.doStart(ContainerLifeCycle.java:117)
+	at org.eclipse.jetty.server.handler.AbstractHandler.doStart(AbstractHandler.java:97)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:73)
+	- locked <0x000000077bc78060> (a java.lang.Object)
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.start(ContainerLifeCycle.java:169)
+	at org.eclipse.jetty.server.Server.start(Server.java:423)
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.doStart(ContainerLifeCycle.java:110)
+	at org.eclipse.jetty.server.handler.AbstractHandler.doStart(AbstractHandler.java:97)
+	at org.eclipse.jetty.server.Server.doStart(Server.java:387)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:73)
+	- locked <0x000000077bc78150> (a java.lang.Object)
+	at kd.bos.service.bootstrap.embedjetty.EmbedJettyServer.start(EmbedJettyServer.java:188)
+	at kd.bos.service.bootstrap.Booter.main(Booter.java:64)
+
+   Locked ownable synchronizers:
+	- None
