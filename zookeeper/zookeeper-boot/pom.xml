@@ -64,7 +64,7 @@
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <manifestEntries>
-                                        <Main-Class>com.hzk.zookeeper.boot.ZookeeperSaslMain</Main-Class>
+                                        <Main-Class>com.hzk.zookeeper.boot.ssl.ZookeeperSslMain</Main-Class>
                                     </manifestEntries>
                                 </transformer>
                             </transformers>

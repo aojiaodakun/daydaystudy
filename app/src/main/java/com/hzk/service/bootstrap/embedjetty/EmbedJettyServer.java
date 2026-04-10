@@ -46,6 +46,7 @@ public class EmbedJettyServer implements BootServer {
         context.setResourceBase("webapp/");
         context.setParentLoaderPriority(true);
 
+        // 表单请求体最大值
         int max = Integer.getInteger("org.eclipse.jetty.server.Request.maxFormContentSize", 200000000).intValue();
         context.setMaxFormContentSize(max);
         context.setInitParameter("org.eclipse.jetty.servlet.Default.dirAllowed", "false");

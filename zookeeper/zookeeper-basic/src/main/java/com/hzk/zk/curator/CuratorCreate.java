@@ -6,6 +6,8 @@ import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.framework.api.BackgroundCallback;
 import org.apache.curator.framework.api.CuratorEvent;
+import org.apache.curator.framework.api.ErrorListenerEnsembleable;
+import org.apache.curator.framework.api.GetConfigBuilder;
 import org.apache.curator.retry.ExponentialBackoffRetry;
 import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.ZooDefs;
@@ -32,8 +34,22 @@ public class CuratorCreate {
 
     @Before
     public void before(){
+        /**
+         * SSL
+         */
+        System.setProperty("zookeeper.client.secure", "true");
+        System.setProperty("zookeeper.clientCnxnSocket", "org.apache.zookeeper.ClientCnxnSocketNetty");
+        System.setProperty("zookeeper.ssl.trustStore.location", "D:\\project\\daydaystudy\\zookeeper\\zookeeper-basic\\src\\main\\resources\\ssl\\truststore.jks");
+        System.setProperty("zookeeper.ssl.trustStore.password", "trustPassword");
+
+
 //        String url = "127.0.0.1:2181,127.0.0.1:2182,127.0.0.1:2183";
-        String url = "127.0.0.1:2181";
+//        String url = "127.0.0.1:2182";
+
+        // 虚拟机单机
+//        String url = "172.20.158.201:2182";
+        // 虚拟机集群
+        String url = "172.20.158.201:2181,172.20.158.201:2182,172.20.158.201:2183";
 //        ConnectStringParser connectStringParser = new ConnectStringParser(url);
 //        HostProvider hostProvider = new StaticHostProvider(connectStringParser.getServerAddresses());
 //        ArrayList<InetSocketAddress> serverAddresses = connectStringParser.getServerAddresses();
@@ -59,9 +75,10 @@ public class CuratorCreate {
     @Test
     public void create1() throws Exception{
         Random random = new Random();
-        String node = "/type" + random.nextInt(100000);
+//        String node = "/type" + random.nextInt(100000);
+        String node = "/type";
         byte[] bytes = node.getBytes("utf-8");
-        bytes = new byte[1024 * 1024 * 1];
+//        bytes = new byte[1024 * 1024 * 1];
 //        bytes = new byte[1024 * 1];
         client.create()
                 .creatingParentsIfNeeded()

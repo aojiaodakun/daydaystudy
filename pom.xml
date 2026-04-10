@@ -17,6 +17,7 @@
         <module>app</module>
         <module>util</module>
         <module>nacos</module>
+        <module>db</module>
     </modules>
 
 
@@ -24,28 +25,46 @@
         <revision>1.0-SNAPSHOT</revision>
         <junit.version>4.12</junit.version>
         <fastjson.version>1.2.83</fastjson.version>
+        <jackson.version>2.16.2</jackson.version>
+        <hessian.version>4.0.66</hessian.version>
         <commons-io.version>2.6</commons-io.version>
         <commons-lang.version>3.12.0</commons-lang.version>
+        <commons-collections4.version>4.4</commons-collections4.version>
         <commons-validator.version>1.7</commons-validator.version>
         <commons-pool2.version>2.11.1</commons-pool2.version>
         <commons-collections.version>3.2.2</commons-collections.version>
         <guava.version>29.0-jre</guava.version>
-        <slf4j-api.version>1.7.30</slf4j-api.version>
+        <slf4j.version>1.7.30</slf4j.version>
         <logback.version>1.2.13</logback.version>
         <log4j.version>1.2.17</log4j.version>
         <metrics.version>4.2.3</metrics.version>
-        <tomcat.version>9.0.90</tomcat.version>
+        <tomcat.version>9.0.107</tomcat.version>
         <dubbo.version>2.7.8</dubbo.version>
-        <zookeeper.version>3.6.1</zookeeper.version>
+        <zookeeper.version>3.9.2</zookeeper.version>
         <redis.version>3.8.0</redis.version>
         <nacos.version>2.2.4</nacos.version>
         <snakeyaml.version>1.32</snakeyaml.version>
-        <curator.version>4.2.0</curator.version>
+        <curator.version>5.5.0</curator.version>
         <archaius-core.version>0.7.7</archaius-core.version>
         <commons-configuration.version>1.10</commons-configuration.version>
         <validation-api.version>1.0.0.GA</validation-api.version>
         <hibernate-validator.version>4.2.0.Final</hibernate-validator.version>
         <annotations.version>2.0.3</annotations.version>
+        <mysql.version>8.0.33</mysql.version>
+        <postgresql.version>42.2.28</postgresql.version>
+        <hikaricp.version>3.4.2</hikaricp.version>
+        <bcprov.version>1.78.1</bcprov.version>
+        <cglib.version>3.3.0</cglib.version>
+        <twelvemonkeys.version>3.9.4</twelvemonkeys.version>
+        <pngj.version>2.1.0</pngj.version>
+        <ehcache.version>3.9.2</ehcache.version>
+        <asm.version>9.6</asm.version>
+        <kafka.version>3.4.0</kafka.version>
+        <apache.httpclient.version>4.5.7</apache.httpclient.version>
+        <hutool.version>5.8.31</hutool.version>
+        <prometheus.version>0.16.0</prometheus.version>
+        <poi.version>5.2.2</poi.version>
+        <beanutils.version>1.11.0</beanutils.version>
     </properties>
 
     <dependencyManagement>
@@ -72,6 +91,11 @@
             </dependency>
             <dependency>
                 <groupId>org.apache.commons</groupId>
+                <artifactId>commons-collections4</artifactId>
+                <version>${commons-collections4.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
                 <artifactId>commons-pool2</artifactId>
                 <version>${commons-pool2.version}</version>
             </dependency>
@@ -90,12 +114,34 @@
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
             </dependency>
+            <!-- jackson start-->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <!-- jackson end-->
+            <dependency>
+                <groupId>com.caucho</groupId>
+                <artifactId>hessian</artifactId>
+                <version>${hessian.version}</version>
+            </dependency>
             <!-- 日志框架 start-->
             <!-- 日志门面slf4j -->
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
-                <version>${slf4j-api.version}</version>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>jul-to-slf4j</artifactId>
+                <version>${slf4j.version}</version>
             </dependency>
             <!-- logback日志框架，默认实现slf4j协议 -->
             <dependency>
@@ -114,6 +160,12 @@
                 <version>${log4j.version}</version>
             </dependency>
             <!-- 日志框架 end-->
+            <dependency>
+                <groupId>org.apache.kafka</groupId>
+                <artifactId>kafka-clients</artifactId>
+                <version>${kafka.version}</version>
+            </dependency>
+
             <!-- metric start -->
             <dependency>
                 <groupId>io.dropwizard.metrics</groupId>
@@ -141,12 +193,22 @@
                 <version>${metrics.version}</version>
             </dependency>
             <!-- metric end -->
+            <dependency>
+                <groupId>org.bouncycastle</groupId>
+                <artifactId>bcprov-jdk18on</artifactId>
+                <version>${bcprov.version}</version>
+            </dependency>
 
             <!-- webServer start-->
             <!-- tomcat start-->
             <dependency>
                 <groupId>org.apache.tomcat.embed</groupId>
                 <artifactId>tomcat-embed-core</artifactId>
+                <version>${tomcat.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.tomcat.embed</groupId>
+                <artifactId>tomcat-embed-websocket</artifactId>
                 <version>${tomcat.version}</version>
             </dependency>
             <!-- tomcat end-->
@@ -231,6 +293,116 @@
                 <artifactId>annotations</artifactId>
                 <version>${annotations.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.bouncycastle</groupId>
+                <artifactId>bcprov-jdk15on</artifactId>
+                <version>1.69</version>
+            </dependency>
+
+
+            <!-- db start -->
+            <dependency>
+                <groupId>com.mysql</groupId>
+                <artifactId>mysql-connector-j</artifactId>
+                <version>8.0.33</version>
+            </dependency>
+            <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>42.2.28</version>
+            </dependency>
+            <dependency>
+                <groupId>com.zaxxer</groupId>
+                <artifactId>HikariCP</artifactId>
+                <version>3.4.2</version>
+            </dependency>
+            <!-- db end -->
+
+            <dependency>
+                <groupId>cglib</groupId>
+                <artifactId>cglib</artifactId>
+                <version>${cglib.version}</version>
+            </dependency>
+
+            <!-- 图片水印 -->
+            <dependency>
+                <groupId>com.twelvemonkeys.imageio</groupId>
+                <artifactId>imageio-core</artifactId>
+                <version>${twelvemonkeys.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.twelvemonkeys.imageio</groupId>
+                <artifactId>imageio-jpeg</artifactId>
+                <version>${twelvemonkeys.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ar.com.hjg</groupId>
+                <artifactId>pngj</artifactId>
+                <version>${pngj.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.ehcache</groupId>
+                <artifactId>ehcache</artifactId>
+                <version>${ehcache.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.ow2.asm</groupId>
+                <artifactId>asm</artifactId>
+                <version>${asm.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${apache.httpclient.version}</version>
+            </dependency>
+            <!-- hutool start -->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool.version}</version>
+            </dependency>
+            <!-- hutool end -->
+            <!-- poi start-->
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi</artifactId>
+                <version>${poi.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-ooxml</artifactId>
+                <version>${poi.version}</version>
+            </dependency>
+            <!-- poi end-->
+
+            <dependency>
+                <groupId>io.prometheus</groupId>
+                <artifactId>simpleclient</artifactId>
+                <version>${prometheus.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.prometheus</groupId>
+                <artifactId>simpleclient_hotspot</artifactId>
+                <version>${prometheus.version}</version>
+            </dependency>
+            <!-- 用来启动内置 HTTP Server 暴露 /metrics -->
+            <dependency>
+                <groupId>io.prometheus</groupId>
+                <artifactId>simpleclient_httpserver</artifactId>
+                <version>${prometheus.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>commons-beanutils</groupId>
+                <artifactId>commons-beanutils</artifactId>
+                <version>${beanutils.version}</version>
+            </dependency>
+
+
+
         </dependencies>
     </dependencyManagement>
 

@@ -33,7 +33,7 @@ public class NacosConfigClient implements NacosConfigService {
         return configService.getConfig(dataId, group, timeoutMs);
     }
 
-    @Override
+
     public String getConfig(String dataId, String group, String tag, String appName, long timeoutMs) throws NacosException {
         return null;
     }

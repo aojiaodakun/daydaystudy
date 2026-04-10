@@ -13,6 +13,10 @@
 
     <dependencies>
         <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.example</groupId>
             <artifactId>util</artifactId>
             <version>${revision}</version>
@@ -33,20 +37,23 @@
         </dependency>
         <!-- jetty start-->
         <dependency>
-            <groupId>org.eclipse.jetty</groupId>
+            <groupId>org.eclipse.jetty.aggregate</groupId>
             <artifactId>jetty-all</artifactId>
             <version>9.4.54.v20240208</version>
             <scope>system</scope>
             <systemPath>${project.basedir}/src/main/resources/lib/jetty/jetty-all-9.4.54.v20240208.jar</systemPath>
         </dependency>
         <!-- jetty end-->
-        <!-- jetty end-->
         <!-- tomcat start-->
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-core</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-websocket</artifactId>
+        </dependency>
+        <!-- tomcat end-->
         <!-- dubbo rpc start-->
         <dependency>
             <groupId>org.apache.dubbo</groupId>
@@ -85,6 +92,14 @@
         <dependency>
             <groupId>commons-configuration</groupId>
             <artifactId>commons-configuration</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.caucho</groupId>
+            <artifactId>hessian</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
         </dependency>
     </dependencies>
 

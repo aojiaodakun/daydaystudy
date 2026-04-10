@@ -12,6 +12,15 @@ import java.io.PrintWriter;
 
 public class DubboServlet implements Servlet {
 
+    static {
+        System.out.println("DubboServlet static");
+    }
+
+    public DubboServlet(){
+        System.out.println("DubboServlet construct");
+    }
+
+
     @Override
     public void init(ServletConfig servletConfig) throws ServletException {
 
