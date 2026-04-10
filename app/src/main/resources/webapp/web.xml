@@ -30,6 +30,16 @@
     </filter-mapping>
 
     <filter>
+        <filter-name>HessianFilter</filter-name>
+        <filter-class>com.hzk.webserver.filter.hessian.HessianFilter</filter-class>
+        <filter-order>3</filter-order>
+    </filter>
+    <filter-mapping>
+        <filter-name>HessianFilter</filter-name>
+        <url-pattern>*.do</url-pattern>
+    </filter-mapping>
+
+    <filter>
         <filter-name>LoginFilter</filter-name>
         <filter-class>com.hzk.webserver.filter.LoginFilter</filter-class>
         <filter-order>5000</filter-order>
